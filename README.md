@@ -1,5 +1,4 @@
 # HR Analytics Dashboard
-## 🛠️ Tech Stack
 
 <p align="center">
 
