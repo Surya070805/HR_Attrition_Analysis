@@ -18,6 +18,10 @@
 
 </p>
 
+## Repository Structure & Project Artifacts
+
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/a4270f0e-4120-4b6d-92dd-118e7f30eb65" />
+
 ## Workforce Retention Analytics Using the IBM HR Employee Attrition Dataset
 
 ### Project Overview
@@ -29,10 +33,9 @@ This project develops an end-to-end HR Analytics solution using the IBM HR Emplo
 The project goes beyond traditional HR dashboards by combining descriptive analytics, diagnostic analytics, risk analysis, and persona analysis to support workforce retention decisions.
 
 ---
-## Repository Structure & Project Artifacts
 
-<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/a4270f0e-4120-4b6d-92dd-118e7f30eb65" />
-
+## Dashboard Preview
+<img width="1693" height="929" alt="image" src="https://github.com/user-attachments/assets/da8e2554-557a-4c00-a5af-ae60b5044293" />
 
 ## Business Problem
 
