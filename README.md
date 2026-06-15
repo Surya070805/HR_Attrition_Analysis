@@ -1,4 +1,4 @@
-# HR Analytics Dashboard
+# HR Attrition Analysis
 ## 🛠️ Tech Stack
 <p align="center">
 
