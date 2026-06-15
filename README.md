@@ -11,6 +11,10 @@ This project develops an end-to-end HR Analytics solution using the IBM HR Emplo
 The project goes beyond traditional HR dashboards by combining descriptive analytics, diagnostic analytics, risk analysis, and persona analysis to support workforce retention decisions.
 
 ---
+## Repository Structure & Project Artifacts
+
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/a4270f0e-4120-4b6d-92dd-118e7f30eb65" />
+
 
 ## Business Problem
 
