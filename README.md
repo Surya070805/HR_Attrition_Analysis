@@ -25,7 +25,7 @@ The dashboard is engineered as an executive single-page decision canvas (`1920 Ã
   <img width="1693" height="929" alt="HR Analytics Executive Dashboard" src="https://github.com/user-attachments/assets/da8e2554-557a-4c00-a5af-ae60b5044293" />
 </p>
 
-> *Local Dashboard Asset: [`dashboard/HR Analytics Dashboard.png`](dashboard/HR%20Analytics%20Dashboard.png) | Wireframe Reference: [`dashboard/HR_Dashboard.png`](dashboard/HR_Dashboard.png)*
+> *Local Dashboard Asset: [`dashboard/HR Analytics Dashboard.png`](dashboard/HR%20Analytics%20Dashboard.png) 
 
 ---
 
