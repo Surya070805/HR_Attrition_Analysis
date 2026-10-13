@@ -1,349 +1,339 @@
-# HR Attrition Analysis
-## 🛠️ Tech Stack
+# 📊 IBM HR Analytics & Workforce Retention Intelligence
+
 <p align="center">
-
-<img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
-
-<img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white"/>
-
-<img src="https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white"/>
-
-<img src="https://img.shields.io/badge/Matplotlib-11557c?style=for-the-badge"/>
-
-<img src="https://img.shields.io/badge/Excel-217346?style=for-the-badge&logo=microsoft-excel&logoColor=white"/>
-
-<img src="https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white"/>
-
-<img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white"/>
-
+  <img src="https://img.shields.io/badge/Power_BI-PBIP_%26_PBIR-F2C811?style=for-the-badge&logo=powerbi&logoColor=black"/>
+  <img src="https://img.shields.io/badge/DAX-28_Curated_Measures-005FB8?style=for-the-badge&logo=microsoft&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white"/>
+  <img src="https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Scikit--Learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white"/>
+  <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white"/>
 </p>
 
-## Repository Structure & Project Artifacts
+An enterprise-grade **People Analytics & Workforce Retention Intelligence System** built using the IBM HR Employee Attrition dataset. This project diagnoses the root causes of employee turnover, isolates anomalous high-risk flight cohorts, and equips HR leadership with an executive single-page decision canvas.
 
-<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/a4270f0e-4120-4b6d-92dd-118e7f30eb65" />
-
-## Workforce Retention Analytics Using the IBM HR Employee Attrition Dataset
-
-### Project Overview
-
-Employee attrition is one of the most critical challenges faced by HR departments. High turnover increases recruitment costs, impacts productivity, causes knowledge loss, and affects business continuity.
-
-This project develops an end-to-end HR Analytics solution using the IBM HR Employee Attrition Dataset to identify workforce risks, discover attrition drivers, uncover high-risk employee personas, and provide data-driven retention recommendations.
-
-The project goes beyond traditional HR dashboards by combining descriptive analytics, diagnostic analytics, risk analysis, and persona analysis to support workforce retention decisions.
+The solution integrates **Exploratory Data Analysis (EDA)**, **Statistical Profiling**, **Machine Learning Feature Importance**, and a **production Power BI Desktop (PBIP / PBIR)** report backed by a **TMDL Tabular Semantic Model** with **28 production DAX business measures**.
 
 ---
 
-## Dashboard Preview
-<img width="1693" height="929" alt="image" src="https://github.com/user-attachments/assets/da8e2554-557a-4c00-a5af-ae60b5044293" />
+## 📸 Executive Dashboard Showcase
 
-## Business Problem
+The dashboard is engineered as an executive single-page decision canvas (`1920 × 1080` FHD, Fit-to-Page) delivering high information density with zero vertical scrolling:
 
-HR leaders need answers to questions such as:
+<p align="center">
+  <img width="1693" height="929" alt="HR Analytics Executive Dashboard" src="https://github.com/user-attachments/assets/da8e2554-557a-4c00-a5af-ae60b5044293" />
+</p>
 
-* Which employees are most likely to leave?
-* What factors influence attrition?
-* Which workforce segments contribute most to employee exits?
-* Which employee personas represent the highest retention risk?
-* Where should retention efforts be prioritized?
-
-Traditional reporting explains **what happened**, but rarely explains **why it happened**.
-
-This project aims to bridge that gap.
+> *Local Dashboard Asset: [`dashboard/HR Analytics Dashboard.png`](dashboard/HR%20Analytics%20Dashboard.png) | Wireframe Reference: [`dashboard/HR_Dashboard.png`](dashboard/HR_Dashboard.png)*
 
 ---
 
-## Dataset
+## 📂 Repository Structure & Project Artifacts
 
-**Dataset:** IBM HR Employee Attrition Dataset
+<p align="center">
+  <img width="1536" height="1024" alt="Repository Structure & Project Artifacts" src="https://github.com/user-attachments/assets/a4270f0e-4120-4b6d-92dd-118e7f30eb65" />
+</p>
 
-### Dataset Characteristics
+---
 
-* 1,470 Employee Records
-* 35 Workforce Attributes
-* Employee Demographics
-* Job Information
-* Compensation Data
-* Employee Experience Metrics
-* Career Progression Information
-* Attrition Status
+## 🎯 Executive Summary & Business Problem
 
-### Target Variable
+Unplanned employee turnover costs modern enterprises between **50% to 200% of an employee's annual salary** due to recruitment costs, lost institutional knowledge, onboarding overhead, and lost productivity. In a workforce of 1,470 employees with an average monthly income of $6,503, unchecked turnover incurs millions of dollars in preventable expenses.
 
-```text
-Attrition (Yes / No)
+### 🏢 Key Workforce Metrics at a Glance
+| Metric | Value | Benchmark / Status | Strategic Implication |
+| :--- | :---: | :---: | :--- |
+| **Total Headcount** | `1,470` | Enterprise Base | Workforce population across R&D, Sales, and HR |
+| **Active Workforce** | `1,233` | `83.88%` | Retained talent driving ongoing business operations |
+| **Total Exits** | `237` | Cumulative | Total voluntary and involuntary departures |
+| **Company Attrition Rate** | `16.12%` | **+3.12% vs Industry (13.00%)** | 🚨 Elevated turnover exceeding industry target benchmark |
+| **Overtime Workforce** | `416` | `28.30%` of staff | High burnout risk cohort requiring governance |
+| **Average Tenure** | `7.0 Yrs` | Company average | Heavily skewed by senior cohort retention |
+
+---
+
+## 🔍 Core Analytical Discoveries & Anomalies
+
+Through in-depth Python EDA, correlation analysis, machine learning feature importance, and Power BI DAX modeling, four distinct attrition dynamics were isolated:
+
+### 1. 📉 The "1st-Year Cliff" (Onboarding Disruption)
+Attrition is heavily front-loaded in the employee lifecycle:
+- **0 – 1 Year (New Hires)**: **34.88% Attrition Rate** (75 departures out of 215 new hires).
+- **1 – 3 Years**: Drops sharply to **18.43%**.
+- **3 – 5 Years**: Stabilizes to **13.07%**.
+- **5 – 10 Years**: Reaches **12.28%**.
+- **10+ Years**: Stabilizes to **8.13%**.
+> **Key Finding**: 1 out of every 3 new hires departs within their first 12 months. Retention interventions past year 2 yield diminishing returns compared to pre-emptive 90-day onboarding programs.
+
+### 2. ⚡ The OverTime Multiplier (~3× Turnover Rate)
+- **Employees working OverTime**: **30.53% Attrition Rate** (127 exits / 416 employees).
+- **Employees on Standard Hours**: **10.32% Attrition Rate** (110 exits / 1,054 employees).
+> **Key Finding**: Assigning staff to ongoing overtime nearly **triples their turnover probability**. Overtime is the single strongest operational catalyst of voluntary exits.
+
+### 3. 🎯 The Attrition Risk Matrix (Impact vs. Risk Quadrants)
+Taking inspiration from the Risk Matrix analysis in our Jupyter notebooks, we evaluated **Attrition Rate (Risk)** against **Total Exits (Impact)**:
+
+```
+                      HIGH RISK (Attrition Rate > 18%)
+                                    ▲
+        [High Risk / Moderate Volume] │ [CRITICAL RISK / MASS IMPACT]
+        • Sales Representative:     │ • Laboratory Technician:
+          39.76% Attrition, 33 Exits│   23.94% Attrition, 62 Exits (26.2% share)
+        • Human Resources:          │ • Sales Executive:
+          23.08% Attrition, 12 Exits│   17.48% Attrition, 57 Exits (24.1% share)
+                                    │
+LOW IMPACT ─────────────────────────┼─────────────────────────► HIGH IMPACT
+(< 20 Exits)                        │                           (> 40 Exits)
+        [STABLE FOUNDATION]         │ [HIGH VOLUME / LOW RISK]
+        • Research Director:        │ • Research Scientist:
+          2.50% Attrition, 2 Exits  │   16.10% Attrition, 47 Exits (19.8% share)
+        • Manager:                  │
+          4.90% Attrition, 5 Exits  │
+                                    ▼
+                      LOW RISK (Attrition Rate < 10%)
+```
+
+* **The Core Vulnerability**: **Laboratory Technicians (62 exits)** and **Sales Executives (57 exits)** account for **50.21% of all company exits** (119 out of 237). Targeted retention in these two roles resolves over half of the organization's attrition volume.
+* **The High Churn Outlier**: **Sales Representatives** experience extreme turnover (**39.76%**), signaling severe commission volatility or role expectation mismatch.
+
+### 4. 🚨 Multi-Factor Persona Anomaly Intersections
+Applying multi-factor combinatorial slicing reveals hyper-vulnerable employee cohorts where turnover surges past 70%:
+1. **Low Income (<$3.5K) + OverTime + New Hire (0-1 Yr)**: **71.43% Attrition** (30 exits / 42 staff).
+2. **Laboratory Technician + OverTime + New Hire (0-1 Yr)**: **75.00% Attrition** (15 exits / 20 staff).
+3. **Sales Department + Job Level 1 + OverTime**: **72.73% Attrition** (16 exits / 22 staff).
+
+---
+
+## 💻 Code & Technical Implementation
+
+### 1. Production DAX Measures Catalog (`dax/all_measures.dax`)
+The semantic model features **28 business measures** categorized into 5 display folders inside the dedicated `_Measures` table:
+
+```dax
+----------------------------------------------------------------------------------------
+-- 1. WORKFORCE HEADCOUNT & POPULATION KPIS
+----------------------------------------------------------------------------------------
+Total Employees = COUNTROWS('WA_Fn-UseC_-HR-Employee-Attriti')
+
+Active Employees = 
+CALCULATE(
+    COUNTROWS('WA_Fn-UseC_-HR-Employee-Attriti'), 
+    'WA_Fn-UseC_-HR-Employee-Attriti'[Attrition] = "No"
+)
+
+Active Employee % = DIVIDE([Active Employees], [Total Employees], 0)
+
+----------------------------------------------------------------------------------------
+-- 2. ATTRITION METRICS & BENCHMARKS
+----------------------------------------------------------------------------------------
+Attrited Employees = 
+CALCULATE(
+    COUNTROWS('WA_Fn-UseC_-HR-Employee-Attriti'), 
+    'WA_Fn-UseC_-HR-Employee-Attriti'[Attrition] = "Yes"
+)
+
+Attrition Rate = DIVIDE([Attrited Employees], [Total Employees], 0)
+
+Company Attrition Rate = CALCULATE([Attrition Rate], ALL('WA_Fn-UseC_-HR-Employee-Attriti'))
+
+Industry Attrition Rate = 0.13
+
+Attrition Variance to Industry = [Attrition Rate] - [Industry Attrition Rate]
+
+----------------------------------------------------------------------------------------
+-- 3. ADVANCED ANALYTICS & RISK MATRIX METRICS
+----------------------------------------------------------------------------------------
+Contribution to Total Exits = 
+DIVIDE(
+    [Attrited Employees], 
+    CALCULATE([Attrited Employees], ALL('WA_Fn-UseC_-HR-Employee-Attriti')), 
+    0
+)
+
+Department Risk Level = 
+SWITCH(
+    TRUE(), 
+    [Attrition Rate] >= 0.18, "High", 
+    [Attrition Rate] >= 0.10, "Medium", 
+    "Low"
+)
+
+----------------------------------------------------------------------------------------
+-- 5. WORKLOAD & COMPENSATION ANALYTICS
+----------------------------------------------------------------------------------------
+OverTime Employees = 
+CALCULATE(
+    COUNTROWS('WA_Fn-UseC_-HR-Employee-Attriti'), 
+    'WA_Fn-UseC_-HR-Employee-Attriti'[OverTime] = "Yes"
+)
+
+OverTime Attrition Rate = 
+CALCULATE([Attrition Rate], 'WA_Fn-UseC_-HR-Employee-Attriti'[OverTime] = "Yes")
+
+Non-OverTime Attrition Rate = 
+CALCULATE([Attrition Rate], 'WA_Fn-UseC_-HR-Employee-Attriti'[OverTime] = "No")
+```
+
+👉 *Browse all 28 DAX measures in [`dax/all_measures.dax`](dax/all_measures.dax).*
+
+---
+
+### 2. Feature Engineering & Bins (`scripts/feature_engineering.py`)
+To prevent arbitrary binning and support dynamic slicers, strategic cohorts and integer sort columns were engineered in both Python and TMDL:
+
+```python
+# 1. Tenure Bands (Crucial for first-year cliff analysis)
+def assign_tenure_band(years):
+    if years <= 1:
+        return "0 - 1 Yr", 1
+    elif years <= 3:
+        return "1 - 3 Yrs", 2
+    elif years <= 5:
+        return "3 - 5 Yrs", 3
+    elif years <= 10:
+        return "5 - 10 Yrs", 4
+    else:
+        return "10+ Yrs", 5
+
+# 2. Age Groups (Dashboard Slicer)
+def assign_age_group(age):
+    if age < 30:
+        return "Under 30", 1
+    elif age <= 40:
+        return "30 - 40", 2
+    elif age <= 50:
+        return "41 - 50", 3
+    else:
+        return "50+", 4
+
+# 3. Monthly Income Tiers
+def assign_income_band(income):
+    if income < 3000:
+        return "Low (<$3K)", 1
+    elif income < 6000:
+        return "Medium ($3K-$6K)", 2
+    elif income < 10000:
+        return "High ($6K-$10K)", 3
+    else:
+        return "Executive ($10K+)", 4
+```
+
+👉 *Execute the complete Python script via `python scripts/feature_engineering.py`.*
+
+---
+
+## 📊 Power BI Dashboard Visual Architecture
+
+The dashboard is composed of **17 modular PBIR visual containers** organized into a 3-tier hierarchy:
+
+| Zone | Visual Containers | Business Function |
+| :--- | :--- | :--- |
+| **Top Navigation** | `v_0001_header_title` + 4 Slicers (`Dept`, `OverTime`, `JobRole`, `AgeGroup`) | Global filtering, context switching, and metadata status |
+| **Tier 1: KPI Cards** | 6 Cards (`Total HC`, `Active HC`, `Exits`, `Attrition %`, `OverTime HC`, `Avg Tenure`) | High-level organizational health scorecards |
+| **Tier 2: Diagnostics** | `v_0012_scatter_risk_matrix`, `v_0013_combo_tenure_trend`, `v_0014_bar_overtime` | Visualizes the Risk Matrix quadrants, 1st-year cliff, and overtime penalty |
+| **Tier 3: Granular Action**| `v_0015_table_dept_risk`, `v_0016_bar_jobrole_churn`, `v_0017_card_briefing` | Department impact table, role ranking, and executive retention briefing |
+
+---
+
+## 💡 Strategic HR Action Plan & Interventions
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────────────┐
+│                           STRATEGIC HR RETENTION PLAYBOOK                               │
+├───────────────────────────────┬───────────────────────────────┬─────────────────────────┤
+│ 1. 90-Day Onboarding Overhaul │ 2. Overtime Governance        │ 3. Comp & Level-1 Review│
+├───────────────────────────────┼───────────────────────────────┼─────────────────────────┤
+│ • Tackle the 34.88% cliff     │ • Cap mandatory overtime      │ • Address 72.7% churn   │
+│ • Assign peer mentors         │   to max 10 hrs/week          │   in Level-1 sales/tech │
+│ • Check-ins at 30/60/90 days  │ • Provide compensatory rest   │ • Re-index entry comp   │
+│ • Target: Lower 1st-year churn│ • Target: Lower overtime churn│ • Target: Stabilize base│
+│   from 34.9% to < 20%         │   from 30.5% to < 18%         │   turnover in R&D/Sales │
+└───────────────────────────────┴───────────────────────────────┴─────────────────────────┘
 ```
 
 ---
 
-## Project Objectives
-
-* Measure workforce health and attrition.
-* Identify key attrition drivers.
-* Discover high-risk employee segments.
-* Identify employee groups contributing most to workforce loss.
-* Build a retention risk framework.
-* Generate actionable business recommendations.
-* Support HR decision-making through analytics.
-
----
-
-## Project Methodology
+## 📁 Repository Structure
 
 ```text
-Data Assessment
-        ↓
-Data Cleaning
-        ↓
-Feature Engineering
-        ↓
-Exploratory Data Analysis
-        ↓
-Driver Analysis
-        ↓
-Contribution Analysis
-        ↓
-Risk Matrix
-        ↓
-2D Driver Analysis
-        ↓
-3D Persona Analysis
-        ↓
-Recommendations
-        ↓
-Dashboard Design
-```
-
----
-
-## Feature Engineering
-
-The following analytical fields were created:
-
-| Feature       | Purpose                     |
-| ------------- | --------------------------- |
-| Age_Band      | Employee age segmentation   |
-| Income_Band   | Compensation segmentation   |
-| Tenure_Band   | Employee lifecycle analysis |
-| Promotion_Gap | Career progression analysis |
-
----
-
-## Key Analytical Framework
-
-### 1. Driver Analysis
-
-Identifies employee segments with the highest attrition risk.
-
-Metrics:
-
-* Attrition Rate
-* Attrition Difference
-* Attrition Index
-
-Example:
-
-| Driver   | Highest Risk Segment | Attrition Rate |
-| -------- | -------------------- | -------------- |
-| Job Role | Sales Representative | 39.76%         |
-| Tenure   | New Hire             | 34.88%         |
-| Age Band | 18–25                | 34.78%         |
-
----
-
-### 2. Contribution Analysis
-
-Identifies workforce segments responsible for the largest share of employee exits.
-
-Example:
-
-| Driver     | Largest Contributor    | Exits |
-| ---------- | ---------------------- | ----- |
-| Department | Research & Development | 133   |
-| Job Role   | Laboratory Technician  | 62    |
-| Job Level  | Level 1                | 143   |
-
----
-
-### 3. Risk Matrix
-
-Combines:
-
-* Attrition Risk
-* Workforce Impact
-
-to prioritize retention efforts.
-
----
-
-### 4. Two-Dimensional Analysis
-
-Analyzes interactions between workforce drivers.
-
-Example:
-
-| Combination           | Attrition Rate |
-| --------------------- | -------------- |
-| OverTime + Low Income | 58.49%         |
-| OverTime + New Hire   | 55.07%         |
-| Sales + Low Income    | 43.75%         |
-
----
-
-### 5. Three-Dimensional Persona Analysis
-
-Identifies employee personas exhibiting elevated attrition risk.
-
-Example:
-
-| Persona                                     | Attrition Rate |
-| ------------------------------------------- | -------------- |
-| Low Income + OverTime + New Hire            | 81.25%         |
-| Laboratory Technician + OverTime + New Hire | 75.00%         |
-| Sales + Job Level 1 + OverTime              | 72.73%         |
-
----
-
-## Key Findings
-
-### Highest Attrition Risk Segments
-
-| Dimension         | Segment              | Attrition Rate |
-| ----------------- | -------------------- | -------------- |
-| Job Role          | Sales Representative | 39.76%         |
-| Tenure Band       | New Hire             | 34.88%         |
-| Age Band          | 18–25                | 34.78%         |
-| Work-Life Balance | Level 1              | 31.25%         |
-| OverTime          | Yes                  | 30.53%         |
-
----
-
-### Largest Contributors to Attrition
-
-| Dimension      | Segment                | Exits |
-| -------------- | ---------------------- | ----- |
-| Department     | Research & Development | 133   |
-| Job Level      | Level 1                | 143   |
-| Income Band    | Low Income             | 108   |
-| Marital Status | Single                 | 120   |
-
----
-
-### Major Workforce Risks
-
-* Early-career employee attrition
-* Overtime-related turnover
-* Low-income employee retention challenges
-* Entry-level workforce instability
-* Sales Representative turnover
-
----
-
-## Recommendations
-
-### Short-Term Actions
-
-* Improve onboarding programs.
-* Review overtime policies.
-* Strengthen manager support for new hires.
-* Monitor high-risk employee groups.
-
-### Long-Term Actions
-
-* Develop career progression programs.
-* Review compensation competitiveness.
-* Improve retention strategies for entry-level employees.
-* Build workforce planning initiatives around identified risk segments.
-
----
-
-## Project Deliverables
-
-### Notebooks
-
-* IBM-HR-Analytics_Notebook_1.ipynb
-* IBM-HR-Analytics_Notebook_2.ipynb
-
-### Documentation
-
-* Project Charter
-* Business Requirements Document (BRD)
-* Functional Requirements Document (FRD)
-* User Stories
-* KPI Dictionary
-* Insight Log
-* Recommendation Log
-* Requirements Traceability Matrix (RTM)
-
-### Dashboard
-
-* HR Analytics Dashboard (Excel)
-
----
-
-## Repository Structure
-
-```text
-HR-Analytics-Dashboard/
-
-├── data/
-│   └── IBM_HR_Dataset.xlsx
-│
+HR_Attrition_Analysis/
+├── IBM HR Analytics.pbip                 # Power BI Project root file
+├── IBM HR Analytics.Report/              # PBIR report definition layer
+│   └── definition/
+│       ├── pages/
+│       │   ├── b5ec51fc64ab1a1b4998/     # Single-page executive canvas (1920x1080)
+│       │   │   ├── page.json             # Canvas dimensions & background settings
+│       │   │   └── visuals/              # 17 modular PBIR visual container JSONs
+│       │   └── pages.json                # Page metadata index
+│       └── report.json                   # Theme and report settings
+├── IBM HR Analytics.SemanticModel/       # TMDL Semantic Model definition
+│   └── definition/
+│       ├── tables/
+│       │   ├── _Measures.tmdl            # 28 DAX measures catalog
+│       │   └── WA_Fn-UseC_-HR-...tmdl    # Base dataset & calculated columns
+│       └── model.tmdl                    # Model configuration & relationships
+├── dax/
+│   └── all_measures.dax                  # Standalone DAX measures catalog
+├── scripts/
+│   └── feature_engineering.py            # Python feature engineering & risk matrix script
 ├── notebooks/
-│   ├── IBM-HR-Analytics_Notebook_1.ipynb
-│   └── IBM-HR-Analytics_Notebook_2.ipynb
-│
-├── dashboard/
-│   └── HR_Analytics_Dashboard.xlsx
-│
+│   ├── IBM-HR-Analytics_Notebook_1.ipynb # Deep EDA, distributions, correlations
+│   └── IBM-HR-Analytics_Notebook_2.ipynb # ML predictive models & feature importance
+├── data/
+│   └── IBM_HR_Dataset.xlsx               # Source HR workforce dataset (1,470 records)
 ├── documentation/
-│   └── Project_Portfolio_Report.pdf
-│
-├── assets/
-│   └── dashboard_screenshots/
-│
-└── README.md
+│   └── HR_Dashboard_documentation.pdf    # Comprehensive project & KPI documentation
+├── dashboard/
+│   ├── HR Analytics Dashboard.png        # Production dashboard screenshot
+│   └── HR_Dashboard.png                  # Template & wireframe reference
+├── assets/                               # Business analysis & project governance documents
+│   ├── Business Requirements Document.docx
+│   ├── Functional Requirements Document.docx
+│   ├── KPI Dictionary.docx
+│   ├── User Stories Document.docx
+│   └── Requirements Traceability Matrix.docx
+├── _brief/
+│   └── report-spec.md                    # Report design brief & UI specifications
+├── requirements.txt                      # Python environment dependencies
+└── README.md                             # Flagship project documentation
 ```
 
 ---
 
-## Skills Demonstrated
+## 🚀 How to Run & Explore
 
-### Business Analysis
+### 1. Open the Power BI Desktop PBIP Project
+1. Install [Power BI Desktop](https://powerbi.microsoft.com/desktop/) (June 2024 or later with PBIP preview enabled).
+2. Double-click [`IBM HR Analytics.pbip`](IBM%20HR%20Analytics.pbip).
+3. The report will load the live TMDL semantic model with all 17 pre-configured visuals and interactive cross-filtering.
 
-* Stakeholder Analysis
-* Requirements Gathering
-* KPI Definition
-* User Story Development
+### 2. Run the Python Feature Engineering Pipeline
+```bash
+# Clone the repository
+git clone https://github.com/Surya070805/HR_Attrition_Analysis.git
+cd HR_Attrition_Analysis
 
-### Data Analytics
+# Create a virtual environment and install dependencies
+python -m venv venv
+venv\Scripts\activate  # On Linux/macOS: source venv/bin/activate
+pip install -r requirements.txt
 
-* Data Cleaning
-* Feature Engineering
-* Exploratory Data Analysis
-* Driver Analysis
-* Risk Analysis
-* Persona Analysis
+# Run feature engineering & risk matrix validation
+python scripts/feature_engineering.py
+```
 
-### Reporting & Visualization
-
-* Excel Dashboard Design
-* Business Insight Generation
-* Recommendation Framework
-
-### Documentation
-
-* BRD
-* FRD
-* RTM
-* KPI Dictionary
-* Insight Log
-* Recommendation Log
+### 3. Explore the Jupyter Notebooks
+```bash
+jupyter notebook notebooks/IBM-HR-Analytics_Notebook_1.ipynb
+```
 
 ---
 
-## Project Outcome
+## 👨‍💻 Author & Contact
 
-The project successfully transformed employee data into actionable retention intelligence by identifying workforce risks, discovering attrition drivers, prioritizing retention opportunities, and supporting data-driven HR decision-making.
+**Surya Velugula**
+* GitHub: [@Surya070805](https://github.com/Surya070805)
+* Repository: [HR_Attrition_Analysis](https://github.com/Surya070805/HR_Attrition_Analysis)
 
-This project demonstrates both technical analytics capabilities and business-focused problem-solving skills commonly expected from Data Analysts and Business Analysts.
+*Developed as an end-to-end People Analytics portfolio project demonstrating Data Analytics, modern Power BI PBIP/TMDL report authoring, DAX engineering, and strategic HR intelligence.*

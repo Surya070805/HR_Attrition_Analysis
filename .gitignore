@@ -1,0 +1,20 @@
+# Power BI Project (PBIP) user-specific files
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
+
+# Microsoft Office temporary files
+~$*
+
+# Python & Notebook cache
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+
+# OS metadata
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Fabric & AI agent skills workspace cache
+.agents/

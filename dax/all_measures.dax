@@ -1,0 +1,179 @@
+/*
+========================================================================================
+  IBM HR ATTRITION ANALYTICS - DAX MEASURES CATALOG
+  Database Model: WA_Fn-UseC_-HR-Employee-Attriti
+  Target Table: _Measures
+  Author: Surya Velugula
+========================================================================================
+*/
+
+----------------------------------------------------------------------------------------
+-- 1. WORKFORCE HEADCOUNT & POPULATION KPIS
+----------------------------------------------------------------------------------------
+
+-- [Total Employees] Total headcount across the organization
+Total Employees = 
+COUNTROWS('WA_Fn-UseC_-HR-Employee-Attriti')
+
+-- [Active Employees] Current active employees who have not departed
+Active Employees = 
+CALCULATE(
+    COUNTROWS('WA_Fn-UseC_-HR-Employee-Attriti'), 
+    'WA_Fn-UseC_-HR-Employee-Attriti'[Attrition] = "No"
+)
+
+-- [Active Employee %] Retention percentage of current workforce
+Active Employee % = 
+DIVIDE([Active Employees], [Total Employees], 0)
+
+
+----------------------------------------------------------------------------------------
+-- 2. ATTRITION METRICS & BENCHMARKS
+----------------------------------------------------------------------------------------
+
+-- [Attrited Employees] Total volume of employee exits
+Attrited Employees = 
+CALCULATE(
+    COUNTROWS('WA_Fn-UseC_-HR-Employee-Attriti'), 
+    'WA_Fn-UseC_-HR-Employee-Attriti'[Attrition] = "Yes"
+)
+
+-- [Attrition Rate] Core turnover percentage
+Attrition Rate = 
+DIVIDE([Attrited Employees], [Total Employees], 0)
+
+-- [Company Attrition Rate] Baseline company-wide turnover rate (16.12%)
+Company Attrition Rate = 
+CALCULATE(
+    [Attrition Rate], 
+    ALL('WA_Fn-UseC_-HR-Employee-Attriti')
+)
+
+-- [Industry Attrition Rate] External industry standard target benchmark (13.00%)
+Industry Attrition Rate = 0.13
+
+-- [Attrition Variance to Industry] Spread against external industry baseline
+Attrition Variance to Industry = 
+[Attrition Rate] - [Industry Attrition Rate]
+
+-- [Male Exits] Volume of exits among male staff
+Male Exits = 
+CALCULATE(
+    [Attrited Employees], 
+    'WA_Fn-UseC_-HR-Employee-Attriti'[Gender] = "Male"
+)
+
+-- [Female Exits] Volume of exits among female staff
+Female Exits = 
+CALCULATE(
+    [Attrited Employees], 
+    'WA_Fn-UseC_-HR-Employee-Attriti'[Gender] = "Female"
+)
+
+-- [Male Exit %] Proportion of departures that are male
+Male Exit % = 
+DIVIDE([Male Exits], [Attrited Employees], 0)
+
+-- [Female Exit %] Proportion of departures that are female
+Female Exit % = 
+DIVIDE([Female Exits], [Attrited Employees], 0)
+
+
+----------------------------------------------------------------------------------------
+-- 3. ADVANCED ANALYTICS & RISK MATRIX METRICS
+----------------------------------------------------------------------------------------
+
+-- [Attrition Difference] Delta between segment rate and company average (16.12%)
+Attrition Difference = 
+[Attrition Rate] - [Company Attrition Rate]
+
+-- [Attrition Index] Relative risk index (100 = neutral baseline; >100 = high risk)
+Attrition Index = 
+DIVIDE([Attrition Rate], [Company Attrition Rate], 0) * 100
+
+-- [Contribution to Total Exits] Share of total company turnover driven by this segment
+Contribution to Total Exits = 
+DIVIDE(
+    [Attrited Employees], 
+    CALCULATE([Attrited Employees], ALL('WA_Fn-UseC_-HR-Employee-Attriti')), 
+    0
+)
+
+-- [Department Risk Level] Dynamic risk categorization for tables & cards
+Department Risk Level = 
+SWITCH(
+    TRUE(), 
+    [Attrition Rate] >= 0.18, "High", 
+    [Attrition Rate] >= 0.10, "Medium", 
+    "Low"
+)
+
+
+----------------------------------------------------------------------------------------
+-- 4. EMPLOYEE DEMOGRAPHICS & TENURE METRICS
+----------------------------------------------------------------------------------------
+
+-- [Average Age] Mean age of employee population
+Average Age = 
+AVERAGE('WA_Fn-UseC_-HR-Employee-Attriti'[Age])
+
+-- [Average Tenure] Mean organizational tenure (in years)
+Average Tenure = 
+AVERAGE('WA_Fn-UseC_-HR-Employee-Attriti'[YearsAtCompany])
+
+-- [Average Total Working Years] Mean total career experience (in years)
+Average Total Working Years = 
+AVERAGE('WA_Fn-UseC_-HR-Employee-Attriti'[TotalWorkingYears])
+
+-- [Average Years in Current Role] Mean duration in current role (in years)
+Average Years in Current Role = 
+AVERAGE('WA_Fn-UseC_-HR-Employee-Attriti'[YearsInCurrentRole])
+
+-- [Average Years Since Last Promotion] Mean time since last career progression
+Average Years Since Last Promotion = 
+AVERAGE('WA_Fn-UseC_-HR-Employee-Attriti'[YearsSinceLastPromotion])
+
+
+----------------------------------------------------------------------------------------
+-- 5. WORKLOAD & COMPENSATION ANALYTICS
+----------------------------------------------------------------------------------------
+
+-- [Average Monthly Income] Mean compensation per month
+Average Monthly Income = 
+AVERAGE('WA_Fn-UseC_-HR-Employee-Attriti'[MonthlyIncome])
+
+-- [Median Monthly Income] Median compensation per month
+Median Monthly Income = 
+MEDIAN('WA_Fn-UseC_-HR-Employee-Attriti'[MonthlyIncome])
+
+-- [OverTime Employees] Count of employees scheduled for overtime
+OverTime Employees = 
+CALCULATE(
+    COUNTROWS('WA_Fn-UseC_-HR-Employee-Attriti'), 
+    'WA_Fn-UseC_-HR-Employee-Attriti'[OverTime] = "Yes"
+)
+
+-- [OverTime %] Percentage of total workforce on overtime
+OverTime % = 
+DIVIDE([OverTime Employees], [Total Employees], 0)
+
+-- [Non-OverTime Employees] Count of employees with regular working hours
+Non-OverTime Employees = 
+CALCULATE(
+    COUNTROWS('WA_Fn-UseC_-HR-Employee-Attriti'), 
+    'WA_Fn-UseC_-HR-Employee-Attriti'[OverTime] = "No"
+)
+
+-- [OverTime Attrition Rate] Empirical churn rate of overtime employees (30.53%)
+OverTime Attrition Rate = 
+CALCULATE(
+    [Attrition Rate], 
+    'WA_Fn-UseC_-HR-Employee-Attriti'[OverTime] = "Yes"
+)
+
+-- [Non-OverTime Attrition Rate] Empirical churn rate of standard hours employees (10.32%)
+Non-OverTime Attrition Rate = 
+CALCULATE(
+    [Attrition Rate], 
+    'WA_Fn-UseC_-HR-Employee-Attriti'[OverTime] = "No"
+)

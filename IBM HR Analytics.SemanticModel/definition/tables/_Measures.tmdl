@@ -1,0 +1,180 @@
+/// Dedicated table for business measures and workforce KPIs.
+table _Measures
+	lineageTag: ebf9f834-58f4-4f53-8b86-367f1a9c0f7a
+
+	/// Total headcount across the organization.
+	measure 'Total Employees' = COUNTROWS('WA_Fn-UseC_-HR-Employee-Attriti')
+		formatString: #,##0
+		displayFolder: 1. Workforce KPIs
+		lineageTag: dd2f739d-e3a5-4a3a-8669-620d8a84030e
+
+	/// Current active employees who have not attrited.
+	measure 'Active Employees' = CALCULATE(COUNTROWS('WA_Fn-UseC_-HR-Employee-Attriti'), 'WA_Fn-UseC_-HR-Employee-Attriti'[Attrition] = "No")
+		formatString: #,##0
+		displayFolder: 1. Workforce KPIs
+		lineageTag: 490f1c61-3ca2-4f42-b418-bfce7fc83d7b
+
+	/// Percentage of current workforce that is active.
+	measure 'Active Employee %' = DIVIDE([Active Employees], [Total Employees], 0)
+		formatString: 0.00%
+		displayFolder: 1. Workforce KPIs
+		lineageTag: f2e1d9c7-5f33-4c10-a74c-d226c6221351
+
+	/// Total number of employee departures/exits.
+	measure 'Attrited Employees' = CALCULATE(COUNTROWS('WA_Fn-UseC_-HR-Employee-Attriti'), 'WA_Fn-UseC_-HR-Employee-Attriti'[Attrition] = "Yes")
+		formatString: #,##0
+		displayFolder: 2. Attrition KPIs
+		lineageTag: 2669223d-f559-425a-a271-36a0fa88f9d6
+
+	/// Percentage of employees who left the organization.
+	measure 'Attrition Rate' = DIVIDE([Attrited Employees], [Total Employees], 0)
+		formatString: 0.00%
+		displayFolder: 2. Attrition KPIs
+		lineageTag: 48cf8884-7553-4cab-a741-39e1146393e7
+
+	/// Baseline company-wide average attrition rate (16.12%).
+	measure 'Company Attrition Rate' = CALCULATE([Attrition Rate], ALL('WA_Fn-UseC_-HR-Employee-Attriti'))
+		formatString: 0.00%
+		displayFolder: 2. Attrition KPIs
+		lineageTag: 85a24d52-3431-4ecd-b224-8d02a49a6261
+
+	/// Industry benchmark attrition rate (13.00%).
+	measure 'Industry Attrition Rate' = 0.13
+		formatString: 0.00%
+		displayFolder: 2. Attrition KPIs
+		lineageTag: 66115d06-8a74-4534-9819-8b957eaaacdc
+
+	/// Variance between organizational attrition rate and the 13% industry benchmark.
+	measure 'Attrition Variance to Industry' = [Attrition Rate] - [Industry Attrition Rate]
+		formatString: +0.00%;-0.00%;0.00%
+		displayFolder: 2. Attrition KPIs
+		lineageTag: 95c6fa71-2304-46e3-a6d1-9a40fd3a0eaf
+
+	/// Number of exits among male employees.
+	measure 'Male Exits' = CALCULATE([Attrited Employees], 'WA_Fn-UseC_-HR-Employee-Attriti'[Gender] = "Male")
+		formatString: #,##0
+		displayFolder: 2. Attrition KPIs
+		lineageTag: f1e5cf11-45db-4a2e-8e9b-2c5e80bae9a7
+
+	/// Number of exits among female employees.
+	measure 'Female Exits' = CALCULATE([Attrited Employees], 'WA_Fn-UseC_-HR-Employee-Attriti'[Gender] = "Female")
+		formatString: #,##0
+		displayFolder: 2. Attrition KPIs
+		lineageTag: c1f7537b-c386-41d7-908c-f23c858348b2
+
+	/// Share of total exits from male employees.
+	measure 'Male Exit %' = DIVIDE([Male Exits], [Attrited Employees], 0)
+		formatString: 0.00%
+		displayFolder: 2. Attrition KPIs
+		lineageTag: 3341c771-30fb-4bc4-abcb-d81d041ae2de
+
+	/// Share of total exits from female employees.
+	measure 'Female Exit %' = DIVIDE([Female Exits], [Attrited Employees], 0)
+		formatString: 0.00%
+		displayFolder: 2. Attrition KPIs
+		lineageTag: 42cc1f0f-7d28-4634-97e3-f1e35038e103
+
+	/// Spread between segment attrition rate and company baseline.
+	measure 'Attrition Difference' = [Attrition Rate] - [Company Attrition Rate]
+		formatString: +0.00%;-0.00%;0.00%
+		displayFolder: 3. Advanced Analytics & Risk
+		lineageTag: 6a051991-8f5b-4a03-ae3a-7a25e13f6177
+
+	/// Relative risk index vs company baseline (100 = average; >100 = elevated risk).
+	measure 'Attrition Index' = DIVIDE([Attrition Rate], [Company Attrition Rate], 0) * 100
+		formatString: #,##0.0
+		displayFolder: 3. Advanced Analytics & Risk
+		lineageTag: 9891e0f8-d3e7-48c9-8254-97b5f2883497
+
+	/// Segment share of overall organization exits (Volume impact).
+	measure 'Contribution to Total Exits' = DIVIDE([Attrited Employees], CALCULATE([Attrited Employees], ALL('WA_Fn-UseC_-HR-Employee-Attriti')), 0)
+		formatString: 0.00%
+		displayFolder: 3. Advanced Analytics & Risk
+		lineageTag: c085214b-9ae9-4730-8b2a-e0a0c3193fc6
+
+	/// Risk classification band based on attrition severity.
+	measure 'Department Risk Level' = SWITCH(TRUE(), [Attrition Rate] >= 0.18, "High", [Attrition Rate] >= 0.10, "Medium", "Low")
+		displayFolder: 3. Advanced Analytics & Risk
+		lineageTag: 8d057926-4fe6-42e5-8cb0-d4b9f5da5852
+
+	/// Average age of workforce.
+	measure 'Average Age' = AVERAGE('WA_Fn-UseC_-HR-Employee-Attriti'[Age])
+		formatString: #,##0.00
+		displayFolder: 4. Employee Demographics & Tenure
+		lineageTag: b4ca62ee-a256-4465-8e4f-d7442d45b264
+
+	/// Average years of tenure at the company.
+	measure 'Average Tenure' = AVERAGE('WA_Fn-UseC_-HR-Employee-Attriti'[YearsAtCompany])
+		formatString: #,##0.00
+		displayFolder: 4. Employee Demographics & Tenure
+		lineageTag: 0faf7bba-e76d-4340-b40f-0ab8656c0968
+
+	/// Average career experience across workforce.
+	measure 'Average Total Working Years' = AVERAGE('WA_Fn-UseC_-HR-Employee-Attriti'[TotalWorkingYears])
+		formatString: #,##0.00
+		displayFolder: 4. Employee Demographics & Tenure
+		lineageTag: 43cc19d9-bbd3-4fde-b228-43f23ee39705
+
+	/// Average tenure in current role.
+	measure 'Average Years in Current Role' = AVERAGE('WA_Fn-UseC_-HR-Employee-Attriti'[YearsInCurrentRole])
+		formatString: #,##0.00
+		displayFolder: 4. Employee Demographics & Tenure
+		lineageTag: 40d84ce1-973e-4977-ad72-86ddc02974dd
+
+	/// Average time elapsed since previous promotion.
+	measure 'Average Years Since Last Promotion' = AVERAGE('WA_Fn-UseC_-HR-Employee-Attriti'[YearsSinceLastPromotion])
+		formatString: #,##0.00
+		displayFolder: 4. Employee Demographics & Tenure
+		lineageTag: 53e2442a-8d8c-4a08-b67f-1867237e61d0
+
+	/// Mean monthly compensation.
+	measure 'Average Monthly Income' = AVERAGE('WA_Fn-UseC_-HR-Employee-Attriti'[MonthlyIncome])
+		formatString: $#,##0
+		displayFolder: 5. Work & Compensation
+		lineageTag: fc6b2528-f8b8-44c7-9b9d-65ce9efeeddf
+
+	/// Median monthly compensation.
+	measure 'Median Monthly Income' = MEDIAN('WA_Fn-UseC_-HR-Employee-Attriti'[MonthlyIncome])
+		formatString: $#,##0
+		displayFolder: 5. Work & Compensation
+		lineageTag: cb9fa09d-60bd-4e16-a6e3-8a39d1eec5bf
+
+	/// Count of employees working overtime.
+	measure 'OverTime Employees' = CALCULATE(COUNTROWS('WA_Fn-UseC_-HR-Employee-Attriti'), 'WA_Fn-UseC_-HR-Employee-Attriti'[OverTime] = "Yes")
+		formatString: #,##0
+		displayFolder: 5. Work & Compensation
+		lineageTag: a839f0cb-34d8-43eb-a3d8-60e0da216ef2
+
+	/// Proportion of staff assigned to overtime.
+	measure 'OverTime %' = DIVIDE([OverTime Employees], [Total Employees], 0)
+		formatString: 0.00%
+		displayFolder: 5. Work & Compensation
+		lineageTag: 8d4c2dd9-2d68-4650-8283-28e98d046fd2
+
+	/// Count of employees without overtime.
+	measure 'Non-OverTime Employees' = CALCULATE(COUNTROWS('WA_Fn-UseC_-HR-Employee-Attriti'), 'WA_Fn-UseC_-HR-Employee-Attriti'[OverTime] = "No")
+		formatString: #,##0
+		displayFolder: 5. Work & Compensation
+		lineageTag: 3ac115d7-ee30-4b60-b315-f285c000c523
+
+	/// Attrition rate specifically for employees working overtime (30.53%).
+	measure 'OverTime Attrition Rate' = CALCULATE([Attrition Rate], 'WA_Fn-UseC_-HR-Employee-Attriti'[OverTime] = "Yes")
+		formatString: 0.00%
+		displayFolder: 5. Work & Compensation
+		lineageTag: 2f24e0b3-fbfd-4e66-be1f-8d6befdcd245
+
+	/// Attrition rate for employees not working overtime (10.32%).
+	measure 'Non-OverTime Attrition Rate' = CALCULATE([Attrition Rate], 'WA_Fn-UseC_-HR-Employee-Attriti'[OverTime] = "No")
+		formatString: 0.00%
+		displayFolder: 5. Work & Compensation
+		lineageTag: 633e2f49-87eb-4202-b277-4573e43e2fd0
+
+	column Dummy
+		isHidden
+		isNameInferred
+		sourceColumn: [Dummy]
+
+	partition _Measures = calculated
+		mode: import
+		source = ROW("Dummy", BLANK())
+

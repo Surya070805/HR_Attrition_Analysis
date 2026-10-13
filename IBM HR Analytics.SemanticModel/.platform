@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "IBM HR Analytics"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "5c3f69d2-bebe-4045-8b7b-57af075d91d2"
+  }
+}

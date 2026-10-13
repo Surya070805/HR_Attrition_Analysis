@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "IBM HR Analytics"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "5043b977-5e59-4111-badc-2f5f78981994"
+  }
+}
