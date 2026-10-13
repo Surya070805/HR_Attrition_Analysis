@@ -29,13 +29,6 @@ The dashboard is engineered as an executive single-page decision canvas (`1920 �
 
 ---
 
-## 📂 Repository Structure & Project Artifacts
-
-<p align="center">
-  <img width="1536" height="1024" alt="Repository Structure & Project Artifacts" src="https://github.com/user-attachments/assets/a4270f0e-4120-4b6d-92dd-118e7f30eb65" />
-</p>
-
----
 
 ## 🎯 Executive Summary & Business Problem
 
