@@ -22,10 +22,9 @@ The solution integrates **Exploratory Data Analysis (EDA)**, **Statistical Profi
 The dashboard is engineered as an executive single-page decision canvas (`1920 × 1080` FHD, Fit-to-Page) delivering high information density with zero vertical scrolling:
 
 <p align="center">
-  <img width="1693" height="929" alt="HR Analytics Executive Dashboard" src="https://github.com/user-attachments/assets/da8e2554-557a-4c00-a5af-ae60b5044293" />
-</p>
+  <img width="1303" height="731" alt="image" src="https://github.com/user-attachments/assets/83245737-75e7-4f6e-9b81-711085bccf37" />
 
-> *Local Dashboard Asset: [`dashboard/HR Analytics Dashboard.png`](dashboard/HR%20Analytics%20Dashboard.png) 
+</p>
 
 ---
 
